@@ -1,11 +1,15 @@
 
 import { GoogleGenAI } from "@google/genai";
-import { PERSONAL_INFO, EXPERIENCES, EDUCATIONS, SKILLS } from './constants';
+import { PERSONAL_INFO, EXPERIENCES, EDUCATIONS, SKILLS, PUBLICATIONS } from './constants';
 
 // Initialize the Google GenAI client. 
 // The API key is obtained from process.env.API_KEY as per security guidelines.
 export async function askAboutResume(userQuery: string) {
-  // Always create a new instance inside the call or ensure it's initialized correctly with the environment variable.
+  // Check if API key is available
+  if (!process.env.API_KEY) {
+    return "The AI assistant is not configured. Please set up the API key to enable this feature.";
+  }
+  
   const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   
   const systemInstruction = `
@@ -16,6 +20,7 @@ export async function askAboutResume(userQuery: string) {
     Experience: ${JSON.stringify(EXPERIENCES)}
     Education: ${JSON.stringify(EDUCATIONS)}
     Skills: ${JSON.stringify(SKILLS)}
+    Publications: ${JSON.stringify(PUBLICATIONS)}
 
     Answer questions about Chibueze accurately based on this information. 
     Keep responses professional and concise.
@@ -23,7 +28,7 @@ export async function askAboutResume(userQuery: string) {
 
   try {
     const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
+      model: 'gemini-2.0-flash',
       contents: userQuery,
       config: {
         systemInstruction: systemInstruction,

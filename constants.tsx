@@ -11,6 +11,18 @@ export const PERSONAL_INFO = {
 
 export const EXPERIENCES: Experience[] = [
   {
+    company: "FAIRLENS",
+    role: "Co-Founder",
+    location: "United Kingdom",
+    period: "Jan 2026 – Present",
+    highlights: [
+      "Co-founded and shaped the product vision for an AI screening assistant that processes candidate submissions with high explainability and auditability.",
+      "Integrated generative AI pipelines to deliver comprehensive summaries and structured evaluations, reducing review times by up to 70%.",
+      "Architected bias-monitoring dashboards that flag disparate impact and maintain assessment consistency across diverse evaluator panels.",
+      "Spearheaded product-led growth initiatives, deploying the application at fairlens.app and onboarding early-stage institutional users."
+    ]
+  },
+  {
     company: "BARCLAYS BANK PLC",
     role: "EMEA Tax Operations Analyst",
     location: "United Kingdom",
@@ -49,7 +61,7 @@ export const EXPERIENCES: Experience[] = [
     location: "Nigeria",
     period: "June 2020 - September 2022",
     highlights: [
-      "Published six articles in top-tier journals based on in-depth literature reviews and data analysis.",
+      "Published four articles in top-tier journals based on in-depth literature reviews and data analysis.",
       "Developed curriculum for graduate courses in strategic management and business ethics.",
       "Supported faculty in empirical research, survey design, and statistical analysis for industry practitioners.",
       "Assisted consultants in optimizing operational processes, resulting in a 10% increase in efficiency for clients."
@@ -85,6 +97,13 @@ export const PUBLICATIONS: Publication[] = [
     year: 2024,
     title: "Customer satisfaction survey of the Bus Rapid Transit (BRT) Service in Lagos",
     journal: "Journal Of Economics and Allied Research (JEAR), P.352"
+  },
+  {
+    authors: "Clinton, C.",
+    year: 2022,
+    title: "The essentiality of trust and trust building for digital platforms in Nigeria",
+    journal: "Businessday NG",
+    link: "https://businessday.ng/opinion/article/the-essentiality-of-trust-and-trust-building-for-digital-platforms-in-nigeria/"
   },
   {
     authors: "Clinton, C. and Chatrath, S.K.",

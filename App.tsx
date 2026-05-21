@@ -186,7 +186,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 py-4">
           <StatCard value="4+" label="Years Experience" />
           <StatCard value="100%" label="Accuracy Rate" />
-          <StatCard value="6" label="Journals Published" />
+          <StatCard value="4" label="Journals Published" />
           <StatCard value="8+" label="Tax Jurisdictions" />
         </div>
       </section>
@@ -245,7 +245,7 @@ export default function App() {
                   With expertise across multiple tax jurisdictions including France, Japan, Italy, and Switzerland, I bring a global perspective to every challenge. My work has been recognized by leadership for delivering 100% accuracy under tight deadlines.
                 </p>
                 <p>
-                  Beyond operations, I'm a published researcher with six peer-reviewed articles exploring the intersection of business, ethics, and strategy. I believe in continuous learning and bringing academic rigor to practical business solutions.
+                  Beyond operations, I'm a published researcher with four peer-reviewed articles exploring the intersection of business, ethics, and strategy. I believe in continuous learning and bringing academic rigor to practical business solutions.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3 sm:gap-4 pt-2 sm:pt-4">
@@ -386,21 +386,47 @@ export default function App() {
                   <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900">Publications</h2>
                 </div>
                 <div className="grid gap-4 sm:gap-6 lg:gap-8">
-                  {PUBLICATIONS.map((pub, idx) => (
-                    <div key={idx} className="p-5 sm:p-6 lg:p-8 bg-slate-50 rounded-2xl sm:rounded-3xl border border-slate-100 hover:border-blue-200 hover:bg-white transition-all group">
+                  {PUBLICATIONS.map((pub, idx) => {
+                    const CardContent = (
                       <div className="flex gap-4 sm:gap-6">
                         <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-lg sm:rounded-xl border border-slate-200 flex items-center justify-center text-slate-400 group-hover:text-blue-600 group-hover:border-blue-100 transition-colors shrink-0">
                           <FileText size={16} className="sm:hidden" />
                           <FileText size={20} className="hidden sm:block" />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="text-[9px] sm:text-[10px] font-black text-blue-600 uppercase tracking-widest mb-1 sm:mb-2">{pub.year}</p>
+                          <div className="flex items-center gap-2">
+                            <p className="text-[9px] sm:text-[10px] font-black text-blue-600 uppercase tracking-widest mb-1 sm:mb-2">{pub.year}</p>
+                            {pub.link && <ArrowUpRight size={12} className="text-blue-600 mb-1 sm:mb-2 opacity-60 group-hover:opacity-100 transition-opacity" />}
+                          </div>
                           <h4 className="text-sm sm:text-base lg:text-lg font-extrabold text-slate-900 leading-tight mb-2 sm:mb-4 group-hover:text-blue-600 transition-colors">"{pub.title}"</h4>
                           <p className="text-[10px] sm:text-xs text-slate-400 font-bold uppercase tracking-wider line-clamp-2">{pub.journal}</p>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+
+                    if (pub.link) {
+                      return (
+                        <a 
+                          key={idx} 
+                          href={pub.link} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="block p-5 sm:p-6 lg:p-8 bg-slate-50 rounded-2xl sm:rounded-3xl border border-slate-100 hover:border-blue-200 hover:bg-white hover:shadow-md transition-all group"
+                        >
+                          {CardContent}
+                        </a>
+                      );
+                    }
+
+                    return (
+                      <div 
+                        key={idx} 
+                        className="p-5 sm:p-6 lg:p-8 bg-slate-50 rounded-2xl sm:rounded-3xl border border-slate-100 hover:border-blue-200 hover:bg-white transition-all group"
+                      >
+                        {CardContent}
+                      </div>
+                    );
+                  })}
                 </div>
             </div>
           </div>

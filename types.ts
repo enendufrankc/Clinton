@@ -19,6 +19,7 @@ export interface Publication {
   year: number;
   title: string;
   journal: string;
+  link?: string;
 }
 
 export interface Skill {
